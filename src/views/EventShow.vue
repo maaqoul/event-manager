@@ -3,8 +3,8 @@
     <div class="event-header">
       <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
       <h1 class="title">{{ event.title }}</h1>
-      <h5>Organized by {{ event.organizer }}</h5>
-      <h5>Category{{ event.category }}</h5>
+      <h5>Organized by {{ event.organizer ? event.organizer.name : ''}}</h5>
+      <h5>Category {{ event.category }}</h5>
     </div>
     <BaseIcon name="map"><h2>location</h2></BaseIcon>
     <address>{{ event.location }}</address>
@@ -12,7 +12,7 @@
     <p>{{ event.description }}</p>
     <h2>
       attendees
-      <span class="badge -fill-gradient">{{ event.attendees?.length }}</span>
+      <span class="badge -fill-gradient">{{ event.attendees?.length || 0}}</span>
     </h2>
     <ul class="list-group">
       <li

@@ -10,22 +10,14 @@
 <script>
 /* eslint-disable */
 import EventCard from '@/components/EventCard.vue';
-import EventService from '@/services/EventService';
+import { mapState } from 'vuex';
 export default {
   components: {
     EventCard
   },
-  data() {
-    return {
-      events: []
-    }
-  },
   created() {
-    EventService.getEvents()
-    .then(r => {
-      this.events = r.data
-    })
-    .catch(error => console.error(error.message))
-  }
+    this.$store.dispatch('fetchEvents')
+  },
+  computed: mapState(['events'])
 }
 </script>
